@@ -23,7 +23,7 @@ class SchemaLoader:
         self.root_location = None
         self.schema_text = None
 
-    def load(self, schema_file: Union[str, TextIO], schema_location: Optional[str]=None) -> ShExJ.Schema:
+    def load(self, schema_file: Union[str, TextIO], schema_location: Optional[str]=None) -> ShExJ.Schema | list[dict]:
         """ Load a ShEx Schema from schema_location
 
         :param schema_file:  name or file-like object to deserialize
@@ -44,11 +44,11 @@ class SchemaLoader:
             self.root_location = None
         return self.loads(self.schema_text)
 
-    def loads(self, schema_txt: str) -> ShExJ.Schema:
+    def loads(self, schema_txt: str) -> ShExJ.Schema | list[dict]:
         """ Parse and return schema as a ShExJ Schema
 
-        :param schema_txt: ShExC or ShExJ representation of a ShEx Schema
-        :return: ShEx Schema representation of schema
+        :param schema_txt: ShExC or ShExJ representation of a Schema
+        :return: ShEx representation of schema
         """
         self.schema_text = schema_txt
         if schema_txt.strip()[0] == '{':

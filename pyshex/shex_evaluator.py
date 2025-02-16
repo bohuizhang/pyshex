@@ -81,6 +81,7 @@ class ShExEvaluator:
         :param output_sink: Function for accepting evaluation results and returns whether to keep evaluating
         """
         self.pfx: PrefixLibrary = None
+        self.errors = None
         self.rdf_format = rdf_format
         self.g = None
         self.rdf = rdf
@@ -149,8 +150,10 @@ class ShExEvaluator:
                     self._schema = loader.loads(shex)
                 else:
                     self._schema = loader.load(shex) if isinstance(shex, str) else shex
-                if self._schema is None:
-                    raise ValueError("Unable to parse shex file")
+                if not isinstance(self._schema, ShExJ.Schema):
+                    self.errors = self._schema
+                    self._schema = None
+                    # raise ValueError("Unable to parse shex file")
                 self.pfx = PrefixLibrary(loader.schema_text)
 
     @property
