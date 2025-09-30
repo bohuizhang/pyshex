@@ -12,7 +12,7 @@
 
 cfgraph>=0.2.1
 chardet
-pyshexc==0.9.1
+pyshexc
 rdflib-shim
 requests>=2.22.0
 shexjsg>=0.8.2
