@@ -23,7 +23,7 @@ class SchemaLoader:
         self.root_location = None
         self.schema_text = None
 
-    def load(self, schema_file: Union[str, TextIO], schema_location: Optional[str]=None) -> ShExJ.Schema | list[dict]:
+    def load(self, schema_file: Union[str, TextIO], schema_location: Optional[str]=None):
         """ Load a ShEx Schema from schema_location
 
         :param schema_file:  name or file-like object to deserialize
