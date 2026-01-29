@@ -44,7 +44,7 @@ class SchemaLoader:
             self.root_location = None
         return self.loads(self.schema_text)
 
-    def loads(self, schema_txt: str) -> ShExJ.Schema | list[dict]:
+    def loads(self, schema_txt: str):
         """ Parse and return schema as a ShExJ Schema
 
         :param schema_txt: ShExC or ShExJ representation of a Schema
